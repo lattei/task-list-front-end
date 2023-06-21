@@ -7,25 +7,21 @@ const TASKS = [
     id: 1,
     title: 'Mow the lawn',
     isComplete: false,
-    update: updateTaskData,
   },
   {
     id: 2,
     title: 'Cook Pasta',
-    isComplete: true,
+    isComplete: false,
   },
 ];
 
 const App = () => {
-  const [ taskData, setTaskData ] = useState(TASKS)
+  const [ taskData, setTaskData ] = useState(TASKS);
 
-  const updateTaskData = (id) => {
+  const updateTaskData = (updatedTask) => {
     const updatedTasks = taskData.map((task) => {
-      if (id === task.id) {
-        return {
-          ...task,
-          isComplete: !task.isComplete,
-        };
+      if (task.id === updatedTask.id) {
+        return updatedTask;
       } else {
           return task;
       }
