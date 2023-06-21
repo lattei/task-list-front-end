@@ -16,6 +16,7 @@ const Task = ({ id, title, isComplete, onUpdate }) => {
     onUpdate(updatedTask);
   };
 
+
   const buttonClass = isComplete ? 'tasks__item__toggle--completed' : '';
 
   return (
