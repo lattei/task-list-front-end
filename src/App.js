@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TaskList from './components/TaskList.js';
 import './App.css';
 
+// starter data to assign as default data in useState
 const TASKS = [
   {
     id: 1,
@@ -18,6 +19,8 @@ const TASKS = [
 const App = () => {
   const [ taskData, setTaskData ] = useState(TASKS);
 
+  // function to take the updated task from the Task component
+  // and update the TaskData to reflect that changes to the updated task
   const updateTaskData = (updatedTask) => {
     const updatedTasks = taskData.map((task) => {
       if (task.id === updatedTask.id) {
@@ -30,6 +33,12 @@ const App = () => {
     setTaskData(updatedTasks);
   };
 
+  // function to filter out the task with the matching id
+  // from our previous task data
+  const deleteTask = (id) => {
+    setTaskData((prev) => prev.filter(((task) => task.id !== id)));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -39,7 +48,8 @@ const App = () => {
         <div>
           <TaskList 
             tasks={taskData} 
-            onUpdateTaskData={updateTaskData} />
+            onUpdateTaskData={updateTaskData}
+            onDeleteTask={deleteTask} />
         </div>
       </main>
     </div>
